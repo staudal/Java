@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="NotesApplication:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>NotesApplication</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="NotesApplication-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="NotesApplication:war exploded" />
+    </root>
+  </artifact>
+</component>

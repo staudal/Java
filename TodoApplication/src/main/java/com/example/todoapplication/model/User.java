@@ -5,6 +5,7 @@ import com.example.todoapplication.database.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class User {
     private String username;
@@ -41,13 +42,15 @@ public class User {
 
     public void createUser(String username, String password) {
         Connection connection = new Connection();
-        String sql = "INSERT INTO users (username, password) VALUES ('" + username + "', '" + password + "')";
-        PreparedStatement statement = null;
+        String sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+
         try {
-            statement = connection.connect().prepareStatement(sql);
-            statement.execute();
+            PreparedStatement stmt = connection.connect().prepareStatement(sql);
+            stmt.setString(1, username);
+            stmt.setString(2, password);
+            stmt.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
     }
 
