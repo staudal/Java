@@ -1,4 +1,6 @@
-<!doctype html>
+<%@ page import="java.util.List" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -11,21 +13,10 @@
     <title>Notes App</title>
 </head>
 <body>
-<div class="container flex-column d-flex justify-content-center align-items-center vh-100">
-    <h1 class="mb-5">Log into your account</h1>
-    <div style="width: 500px">
-        <form action="LoginServlet" method="post">
-            <input class="form-control mb-3 ${requestScope.usernameErrorClass}" type="text" placeholder="Username" name="username" required autofocus>
-            <input class="form-control mb-3 ${requestScope.passwordErrorClass}" type="password" placeholder="Password" name="password" required>
-            <button class="btn btn-primary w-100" type="submit">Log in</button>
-            <div class="invalid-feedback text-center pt-3">
-                ${requestScope.errorMessage}
-            </div>
-        </form>
-    </div>
-</div>
-<div class="position-fixed bottom-0 start-50 translate-middle-x">
-    <a class="btn btn-secondary mb-3" href="signup.jsp">Not registered yet?</a>
+<div class="d-flex vh-100 w-100 justify-content-center align-items-center">
+    <form action="WelcomeServlet" method="post">
+        <button type="submit" class="btn btn-primary">Welcome to NoteMate</button>
+    </form>
 </div>
 
 <!-- Bootstrap JS -->

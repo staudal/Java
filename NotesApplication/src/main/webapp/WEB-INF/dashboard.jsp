@@ -49,34 +49,30 @@
                 </div>
             </form>
             <c:forEach var="note" items="${sessionScope.notes}">
-                <div class="card mt-3 ${note.highlightClass()}">
-                    <div class="card-body">
-                        <h5 class="card-title">${note.getTitle()}</h5>
-                        <p class="card-text">${note.getComment()}</p>
-                        <p class="card-text"><small class="text-muted">${note.getTime()}</small></p>
-                    </div>
-                </div>
+                <form method="post">
+                    <button class="card mt-3 text-start w-100" formaction="ChangeNoteServlet" name="noteId" value="${note.value.getId()}">
+                        <div class="card-body">
+                            <h5 class="card-title">${note.value.getTitle()}</h5>
+                            <p class="card-text">${note.value.getComment()}</p>
+                            <p class="card-text"><small class="text-muted">${note.value.getTimestamp()}</small></p>
+                        </div>
+                    </button>
+                </form>
             </c:forEach>
         </div>
         <div class="col-9 p-0 position-relative">
             <div class="bg-light w-100 p-5 border-bottom">
-                <h1>${sessionScope.noteTitle}</h1>
-                <p class="m-0">${sessionScope.noteTime}</p>
+                <h1>${sessionScope.title}</h1>
+                <p class="m-0">${sessionScope.timestamp}</p>
             </div>
             <div class="w-100 p-5">
-                <p>${sessionScope.noteContent}</p>
+                <p>${sessionScope.comment}</p>
             </div>
             <form class="position-absolute bottom-0 start-50 translate-middle-x mb-3" method="post">
                 <button class="btn btn-danger" formaction="DeleteNoteServlet" type="submit">Delete note</button>
-                <button class="btn btn-secondary" formaction="EditNoteServlet" type="submit">Edit note</button>
             </form>
         </div>
     </div>
-</div>
-<div class="position-fixed bottom-0 start-50 translate-middle-x">
-    <form action="LogoutServlet" method="post">
-        <button class="btn btn-danger mb-3" type="submit">Log out</button>
-    </form>
 </div>
 
 <!-- Bootstrap JS -->

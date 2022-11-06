@@ -1,47 +1,23 @@
 package com.example.notesapplication.model;
 
 import java.sql.Timestamp;
+import java.util.UUID;
 
 public class Note {
-    private Integer id;
+    private UUID id;
     private String title;
     private String comment;
-    private String username;
-    private Timestamp time;
+    private Timestamp timestamp;
 
-    public String highlightClass() {
-        return "border-primary";
-    }
-
-    public Note(String title, String comment, String username, Timestamp time) {
+    public Note(String title, String comment, Timestamp timestamp) {
+        this.id = UUID.randomUUID();
         this.title = title;
         this.comment = comment;
-        this.username = username;
-        this.time = time;
+        this.timestamp = timestamp;
     }
 
-    public Note(Integer id, String title, String comment, String username, Timestamp time) {
-        this.id = id;
-        this.title = title;
-        this.comment = comment;
-        this.username = username;
-        this.time = time;
-    }
-
-    public Timestamp getTime() {
-        return time;
-    }
-
-    public void setTime(Timestamp time) {
-        this.time = time;
-    }
-
-    public Integer getId() {
+    public UUID getId() {
         return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getTitle() {
@@ -60,11 +36,11 @@ public class Note {
         this.comment = comment;
     }
 
-    public String getUsername() {
-        return username;
+    public Timestamp getTimestamp() {
+        return timestamp;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
     }
 }

@@ -1,33 +1,42 @@
 package com.example.notesapplication.servlets;
 
 import com.example.notesapplication.model.Note;
-import com.example.notesapplication.model.User;
-import com.example.notesapplication.persistence.NoteMapper;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.sql.Timestamp;
-import java.util.List;
-import java.util.Stack;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.Map;
+import java.util.UUID;
 
 @WebServlet(name = "CreateNoteServlet", value = "/CreateNoteServlet")
 public class CreateNoteServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        NoteMapper noteMapper = new NoteMapper();
-        User user = (User) request.getSession().getAttribute("user");
-        Stack<Note> notes = noteMapper.getNotes(user);
+        // Getting notes list from session
+        Map<UUID, Note> notes = (Map<UUID, Note>) request.getSession().getAttribute("notes");
 
+        // Getting parameters for new note from form
         String title = request.getParameter("title");
         String comment = request.getParameter("comment");
 
-        Note newNote = new Note(title, comment, user.getUsername(), new Timestamp(System.currentTimeMillis()));
-        notes.push(newNote);
+        // Creating new note
+        Note note = new Note(title, comment, new Timestamp(System.currentTimeMillis()));
+        notes.put(note.getId(), note);
 
-        request.getSession().setAttribute("notes", noteMapper.getNotes(user));
+        // Setting new parameters in session scope
+        request.getSession().setAttribute("title", note.getTitle());
+        request.getSession().setAttribute("comment", note.getComment());
+        request.getSession().setAttribute("timestamp", note.getTimestamp());
+
+        // Return user to dashboard
+        request.getSession().setAttribute("notes", notes);
         request.getRequestDispatcher("WEB-INF/dashboard.jsp").forward(request, response);
     }
 }
