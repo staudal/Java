@@ -27,6 +27,15 @@ public class User {
         this.id = UUID.randomUUID();
     }
 
+    public User(UUID id, String email, String password, String firstName, String lastName, Basket basket) {
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.basket = basket;
+        this.id = id;
+    }
+
     public String getFirstName() {
         return firstName;
     }

@@ -14,8 +14,6 @@ public class Redirecter extends HttpServlet {
 
         if (page.equals("dashboard")) {
             request.getRequestDispatcher("WEB-INF/dashboard.jsp").forward(request, response);
-        } else if (page.equals("basket")) {
-            request.getRequestDispatcher("WEB-INF/basket.jsp").forward(request, response);
         }
     }
 }

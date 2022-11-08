@@ -20,7 +20,7 @@ public class Login extends HttpServlet {
 
         boolean validated = mapper.validateUser(email, password);
         if (validated) {
-            User user = new User(email, password, mapper.getFirstName(email), mapper.getLastName(email), new Basket());
+            User user = new User(mapper.getUserId(email), email, password, mapper.getFirstName(email), mapper.getLastName(email), new Basket());
             request.getSession().setAttribute("user", user);
             request.getRequestDispatcher("WEB-INF/dashboard.jsp").forward(request, response);
         } else {

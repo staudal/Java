@@ -5,6 +5,7 @@ import com.example.cupcake.model.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.UUID;
 
 public class UserMapper {
     Connection connection = new Connection();
@@ -32,6 +33,20 @@ public class UserMapper {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public UUID getUserId(String email) {
+        String id = "";
+        String sql = "SELECT * FROM users WHERE email = '" + email + "'";
+        try {
+            ResultSet set = connection.connect().createStatement().executeQuery(sql);
+            while (set.next()) {
+                id = set.getString("id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return UUID.fromString(id);
     }
 
     public String getFirstName(String email) {

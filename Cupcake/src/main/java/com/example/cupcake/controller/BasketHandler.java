@@ -8,8 +8,8 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "Order", value = "/Order")
-public class Order extends HttpServlet {
+@WebServlet(name = "BasketHandler", value = "/BasketHandler")
+public class BasketHandler extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = (User) request.getSession().getAttribute("user");
@@ -20,10 +20,6 @@ public class Order extends HttpServlet {
 
         Cupcake cupcake = new Cupcake(topping, bottom);
         user.getBasket().addCupcakeToBasket(cupcake, amount);
-        System.out.println(cupcake.getBottomPrice());
-        System.out.println(cupcake.getToppingPrice());
-        System.out.println(cupcake.getBottomName());
-        System.out.println(cupcake.getToppingName());
 
         request.getSession().setAttribute("user", user);
         request.getRequestDispatcher("WEB-INF/dashboard.jsp").forward(request, response);

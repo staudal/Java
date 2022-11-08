@@ -37,7 +37,7 @@
             <button type="button" class="btn btn-primary position-relative" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 Indkøbskurv
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                ${sessionScope.user.getBasket().getSizeOfBasket()}
+                    ${sessionScope.user.getBasket().getSizeOfBasket()}
                 </span>
             </button>
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -69,7 +69,7 @@
                                 <span><strong>Total: </strong>${sessionScope.user.getBasket().getTotalPrice()} DKK</span>
                                 <div>
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Luk</button>
-                                    <button type="submit" class="btn btn-primary" formaction="BuyItems">Gå til betaling</button>
+                                    <button type="button" class="btn btn-primary">Gå til betaling</button>
                                 </div>
                             </div>
                         </form>
@@ -78,47 +78,30 @@
             </div>
         </div>
     </div>
-    <div class="mt-3 pt-4 pb-4 bg-light d-flex flex-column border">
-        <h2 class="m-auto">Bestil cupcake</h2>
-        <form class="row g-3 align-items-center mt-3 m-auto mb-0" method="post" style="width: 800px">
-            <div class="col-md-4">
-                <label for="bottom" class="form-label">Kagebund</label>
-                <select class="form-select" id="bottom" required name="bottom">
-                    <option selected disabled value="">Vælg...</option>
-                    <option value="chokolade">Chokolade</option>
-                    <option value="vanilje">Vanilje</option>
-                    <option value="muskatnød">Muskatnød</option>
-                    <option value="pistacie">Pistacie</option>
-                    <option value="mandel">Mandel</option>
-                </select>
-            </div>
-            <div class="col-md-4">
-                <label for="topping" class="form-label">Topping</label>
-                <select class="form-select" id="topping" required name="topping">
-                    <option selected disabled value="">Vælg...</option>
-                    <option value="chokolade">Chokolade</option>
-                    <option value="blåbær">Blåbær</option>
-                    <option value="hindbær">Hindbær</option>
-                    <option value="jordbær">Jordbær</option>
-                    <option value="rosin">Rosin</option>
-                    <option value="appelsin">Appelsin</option>
-                    <option value="citron">Citron</option>
-                    <option value="blå ost">Blå ost</option>
-                </select>
-            </div>
-            <div class="col-md-4">
-                <label for="antal" class="form-label">Antal</label>
-                <select class="form-select" id="antal" required name="amount">
-                    <option selected disabled value="">Vælg...</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-            </div>
-            <button class="btn btn-primary" type="submit" formaction="BasketHandler">Læg i kurv</button>
-        </form>
+    <div class="mt-3 p-4 bg-light border d-flex flex-column">
+        <h2 class="m-auto mb-4">Mine bestillinger</h2>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <c:forEach var="order" items="${sessionScope.orders}">
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="https://i.ibb.co/GvjCk0P/login-Background.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Cupcake (${order.getTopping()})</h5>
+                            <p class="card-text">En lækker klassiker fra Olsker med topping af ${order.getTopping()} og bund af ${order.getBottom()}. </p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted"><strong>Pris i alt: </strong>${order.getPrice()} DKK</small>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted"><strong>Er betalt: </strong>${order.getPaid()}</small>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted"><strong>Dato: </strong>${order.getDate()}</small>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

@@ -26,6 +26,10 @@ public class Basket {
         }
     }
 
+    public void clearBasket() {
+        cupcakes.clear();
+    }
+
     public int getTotalPrice() {
         int price = 0;
         for (Cupcake cupcake : cupcakes.values()) {
