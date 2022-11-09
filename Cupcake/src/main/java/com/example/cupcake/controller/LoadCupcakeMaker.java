@@ -6,14 +6,10 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "Redirecter", value = "/Redirecter")
-public class Redirecter extends HttpServlet {
+@WebServlet(name = "LoadCupcakeMaker", value = "/LoadCupcakeMaker")
+public class LoadCupcakeMaker extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String page = request.getParameter("page");
-
-        if (page.equals("dashboard")) {
-            request.getRequestDispatcher("WEB-INF/dashboard.jsp").forward(request, response);
-        }
+        request.getRequestDispatcher("WEB-INF/stepOne.jsp").forward(request, response);
     }
 }

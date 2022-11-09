@@ -9,6 +9,7 @@ public class User {
     private Basket basket;
     private String firstName;
     private String lastName;
+    private String role;
 
     public Basket getBasket() {
         return basket;
@@ -18,22 +19,34 @@ public class User {
         this.basket = basket;
     }
 
-    public User(String email, String password, String firstName, String lastName, Basket basket) {
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    // creating an account
+    public User(String email, String password, String firstName, String lastName, Basket basket, String role) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
         this.basket = basket;
         this.id = UUID.randomUUID();
+        this.role = role;
     }
 
-    public User(UUID id, String email, String password, String firstName, String lastName, Basket basket) {
+    // logging in
+    public User(UUID id, String email, String password, String firstName, String lastName, Basket basket, String role) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
         this.basket = basket;
         this.id = id;
+        this.role = role;
     }
 
     public String getFirstName() {

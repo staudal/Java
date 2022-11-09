@@ -11,7 +11,8 @@ public class UserMapper {
     Connection connection = new Connection();
 
     public void addUserToDatabase(User user) {
-        String sql = "INSERT INTO users (id, email, password, firstName, lastName) VALUES ('" + user.getId() + "', '" + user.getEmail() + "', '" + user.getPassword() + "', '" + user.getFirstName() +"', '" + user.getLastName() +"')";
+// USER SCHEMA: userId (varchar), role (varchar), firstName (varchar), lastName (varchar), email (varchar), password (varchar)
+        String sql = "INSERT INTO users (userId, role, firstName, lastName, email, password) VALUES ('"+user.getId()+"', '"+"customer"+"', '"+user.getFirstName()+"', '"+user.getLastName()+"', '"+user.getEmail()+"', '"+user.getPassword()+"')";
         try {
             connection.connect().createStatement().executeUpdate(sql);
         } catch (SQLException e) {
@@ -32,7 +33,6 @@ public class UserMapper {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     public UUID getUserId(String email) {
@@ -41,7 +41,7 @@ public class UserMapper {
         try {
             ResultSet set = connection.connect().createStatement().executeQuery(sql);
             while (set.next()) {
-                id = set.getString("id");
+                id = set.getString("userId");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -69,11 +69,25 @@ public class UserMapper {
         try {
             ResultSet set = connection.connect().createStatement().executeQuery(sql);
             while (set.next()) {
-                lastName = set.getString("firstName");
+                lastName = set.getString("lastName");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return lastName;
+    }
+
+    public String getRole(String email) {
+        String role = "";
+        String sql = "SELECT * FROM users WHERE email = '" + email + "'";
+        try {
+            ResultSet set = connection.connect().createStatement().executeQuery(sql);
+            while (set.next()) {
+                role = set.getString("role");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return role;
     }
 }

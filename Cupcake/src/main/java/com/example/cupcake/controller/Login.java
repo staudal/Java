@@ -1,5 +1,6 @@
 package com.example.cupcake.controller;
 
+import com.example.cupcake.Mappers.OrderMapper;
 import com.example.cupcake.Mappers.UserMapper;
 import com.example.cupcake.model.Basket;
 import com.example.cupcake.model.User;
@@ -16,15 +17,15 @@ public class Login extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        UserMapper mapper = new UserMapper();
+        UserMapper userMapper = new UserMapper();
+        OrderMapper orderMapper = new OrderMapper();
 
-        boolean validated = mapper.validateUser(email, password);
+        boolean validated = userMapper.validateUser(email, password);
         if (validated) {
-            User user = new User(mapper.getUserId(email), email, password, mapper.getFirstName(email), mapper.getLastName(email), new Basket());
+            User user = new User(userMapper.getUserId(email), email, password, userMapper.getFirstName(email), userMapper.getLastName(email), new Basket(), "customer");
             request.getSession().setAttribute("user", user);
-            request.getRequestDispatcher("WEB-INF/dashboard.jsp").forward(request, response);
+            request.getRequestDispatcher("WEB-INF/stepOne.jsp").forward(request, response);
         } else {
-            System.out.println("WRONG");
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }

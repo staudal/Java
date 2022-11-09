@@ -17,12 +17,12 @@ public class CreateAccount extends HttpServlet {
         String password = request.getParameter("password");
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
-        User user = new User(email, password, firstName, lastName, new Basket());
+        User user = new User(email, password, firstName, lastName, new Basket(), "customer");
 
         UserMapper mapper = new UserMapper();
         mapper.addUserToDatabase(user);
 
-        request.getSession().setAttribute("firstName", firstName);
-        request.getRequestDispatcher("WEB-INF/dashboard.jsp").forward(request, response);
+        request.getSession().setAttribute("user", user);
+        request.getRequestDispatcher("WEB-INF/stepOne.jsp").forward(request, response);
     }
 }

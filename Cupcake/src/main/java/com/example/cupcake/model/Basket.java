@@ -1,18 +1,17 @@
 package com.example.cupcake.model;
 
-import java.util.Map;
 import java.util.TreeMap;
 import java.util.UUID;
 
 public class Basket {
-    private Map<UUID, Cupcake> cupcakes = new TreeMap<>();
+    private TreeMap<UUID, Cupcake> cupcakes = new TreeMap<>();
     private int totalPrice;
 
-    public Map<UUID, Cupcake> getCupcakes() {
+    public TreeMap<UUID, Cupcake> getCupcakes() {
         return cupcakes;
     }
 
-    public void setCupcakes(Map<UUID, Cupcake> cupcakes) {
+    public void setCupcakes(TreeMap<UUID, Cupcake> cupcakes) {
         this.cupcakes = cupcakes;
     }
 
@@ -20,10 +19,8 @@ public class Basket {
         return cupcakes.size();
     }
 
-    public void addCupcakeToBasket(Cupcake cupcake, int amount) {
-        for (int i = 0; i < amount; i++) {
-            this.cupcakes.put(UUID.randomUUID(), cupcake);
-        }
+    public void addCupcakeToBasket(Cupcake cupcake) {
+        this.cupcakes.put(cupcake.getId(), cupcake);
     }
 
     public void clearBasket() {
@@ -33,13 +30,12 @@ public class Basket {
     public int getTotalPrice() {
         int price = 0;
         for (Cupcake cupcake : cupcakes.values()) {
-            price += cupcake.getToppingPrice();
-            price += cupcake.getBottomPrice();
+            price += cupcake.getPrice();
         }
         return price;
     }
 
-    public void removeCupcakeFromBasket(Cupcake cupcake) {
-        getCupcakes().remove(cupcake.getId());
+    public void removeCupcakeFromBasket(UUID id) {
+        this.cupcakes.remove(id);
     }
 }

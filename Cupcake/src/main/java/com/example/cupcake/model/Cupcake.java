@@ -1,15 +1,19 @@
 package com.example.cupcake.model;
 
-import java.util.Map;
 import java.util.UUID;
 
 public class Cupcake {
-    private String toppingName;
-    private String bottomName;
     private UUID id;
-    private int toppingPrice;
-    private int bottomPrice;
-    private int cupcakePrice;
+    private Bottom bottom;
+    private Topping topping;
+    private int price;
+
+    public Cupcake(Bottom bottom, Topping topping) {
+        this.bottom = bottom;
+        this.topping = topping;
+        this.price = bottom.getPrice() + topping.getPrice();
+        this.id = UUID.randomUUID();
+    }
 
     public UUID getId() {
         return id;
@@ -19,53 +23,27 @@ public class Cupcake {
         this.id = id;
     }
 
-    public Cupcake(String toppingName, String bottomName) {
-        Map<String, Integer> toppings = new Topping().populateToppings();
-        Map<String, Integer> bottoms = new Bottom().populateBottoms();
-        this.toppingName = toppingName;
-        this.bottomPrice = toppings.get(toppingName);
-        this.bottomName = bottomName;
-        this.toppingPrice = bottoms.get(bottomName);
-        this.id = UUID.randomUUID();
+    public Bottom getBottom() {
+        return bottom;
     }
 
-    public int getCupcakePrice() {
-        return bottomPrice + toppingPrice;
+    public void setBottom(Bottom bottom) {
+        this.bottom = bottom;
     }
 
-    public void setCupcakePrice(int cupcakePrice) {
-        this.cupcakePrice = cupcakePrice;
+    public Topping getTopping() {
+        return topping;
     }
 
-    public String getToppingName() {
-        return toppingName;
+    public void setTopping(Topping topping) {
+        this.topping = topping;
     }
 
-    public void setToppingName(String toppingName) {
-        this.toppingName = toppingName;
+    public int getPrice() {
+        return price;
     }
 
-    public String getBottomName() {
-        return bottomName;
-    }
-
-    public void setBottomName(String bottomName) {
-        this.bottomName = bottomName;
-    }
-
-    public int getToppingPrice() {
-        return toppingPrice;
-    }
-
-    public void setToppingPrice(int toppingPrice) {
-        this.toppingPrice = toppingPrice;
-    }
-
-    public int getBottomPrice() {
-        return bottomPrice;
-    }
-
-    public void setBottomPrice(int bottomPrice) {
-        this.bottomPrice = bottomPrice;
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

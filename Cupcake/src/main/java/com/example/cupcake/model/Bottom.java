@@ -1,17 +1,27 @@
 package com.example.cupcake.model;
 
-import java.util.Map;
-import java.util.TreeMap;
-
 public class Bottom {
-    private Map<String, Integer> bottoms = new TreeMap<>();
+    private String name;
+    private int price;
 
-    public Map<String, Integer> populateBottoms() {
-        bottoms.put("chokolade", 5);
-        bottoms.put("vanilje", 5);
-        bottoms.put("muskatnød", 5);
-        bottoms.put("pistacie", 6);
-        bottoms.put("mandel",7);
-        return bottoms;
+    public Bottom(String name, int price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }

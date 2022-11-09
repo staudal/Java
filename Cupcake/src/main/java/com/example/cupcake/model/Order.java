@@ -1,61 +1,39 @@
 package com.example.cupcake.model;
 
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.TreeMap;
 import java.util.UUID;
 
 public class Order {
-    private UUID id;
-    private String topping;
-    private String bottom;
+    private UUID orderId;
     private User user;
-    private int price;
-    private String paid;
     private String date;
+    private int price;
+    private String status;
+    private TreeMap<UUID, Cupcake> cupcakes;
 
-    public Order(String topping, String bottom, User user, int price, String paid) {
-        this.topping = topping;
-        this.bottom = bottom;
+    public Order(User user, int price, TreeMap<UUID, Cupcake> cupcakes) {
         this.user = user;
         this.price = price;
-        this.paid = paid;
+        this.cupcakes = cupcakes;
+        this.orderId = UUID.randomUUID();
         this.date = formatDate(new Date());
-        this.id = UUID.randomUUID();
+        this.status = "Modtaget";
     }
 
-    public Order(UUID id, String topping, String bottom, User user, int price, String paid, String date) {
-        this.topping = topping;
-        this.bottom = bottom;
-        this.user = user;
-        this.price = price;
-        this.paid = paid;
-        this.id = id;
-        this.date = date;
+    public String formatDate(Date date) {
+        SimpleDateFormat format = new SimpleDateFormat("d MMM yyyy");
+        String newDate = format.format(date);
+        return newDate;
     }
 
-    public UUID getId() {
-        return id;
+    public UUID getOrderId() {
+        return orderId;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public String getTopping() {
-        return topping;
-    }
-
-    public void setTopping(String topping) {
-        this.topping = topping;
-    }
-
-    public String getBottom() {
-        return bottom;
-    }
-
-    public void setBottom(String bottom) {
-        this.bottom = bottom;
+    public void setOrderId(UUID orderId) {
+        this.orderId = orderId;
     }
 
     public User getUser() {
@@ -66,6 +44,14 @@ public class Order {
         this.user = user;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public int getPrice() {
         return price;
     }
@@ -74,20 +60,19 @@ public class Order {
         this.price = price;
     }
 
-    public String getPaid() {
-        return paid;
+    public String getStatus() {
+        return status;
     }
 
-    public void setPaid(String paid) {
-        this.paid = paid;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public String formatDate(Date date) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("W. MMM yyyy '('hh:mm')'");
-        return dateFormat.format(date);
+    public TreeMap<UUID, Cupcake> getCupcakes() {
+        return cupcakes;
     }
 
-    public String getDate() {
-        return date;
+    public void setCupcakes(TreeMap<UUID, Cupcake> cupcakes) {
+        this.cupcakes = cupcakes;
     }
 }

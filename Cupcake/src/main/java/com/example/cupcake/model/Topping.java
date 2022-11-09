@@ -4,17 +4,27 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class Topping {
-    private Map<String, Integer> toppings = new TreeMap<>();
+    private String name;
+    private int price;
 
-    public Map<String, Integer> populateToppings() {
-        toppings.put("chokolade", 5);
-        toppings.put("blåbær", 5);
-        toppings.put("hindbær", 5);
-        toppings.put("jordbær", 6);
-        toppings.put("rosin",7);
-        toppings.put("appelsin", 8);
-        toppings.put("citron", 8);
-        toppings.put("blå ost", 9);
-        return toppings;
+    public Topping(String name, int price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 }
