@@ -9,6 +9,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.TreeMap;
 import java.util.UUID;
 
@@ -18,7 +19,7 @@ public class LoadUserOrders extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = (User) request.getSession().getAttribute("user");
         OrderMapper mapper = new OrderMapper();
-        TreeMap<UUID, Order> orders = mapper.getAllOrdersForUser(user);
+        ArrayList<Order> orders = mapper.getAllOrdersForUser(user);
 
         request.getSession().setAttribute("orders", orders);
         request.getRequestDispatcher("WEB-INF/orders.jsp").forward(request, response);

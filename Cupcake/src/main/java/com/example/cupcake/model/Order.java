@@ -1,6 +1,7 @@
 package com.example.cupcake.model;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.TreeMap;
 import java.util.UUID;
@@ -11,13 +12,22 @@ public class Order {
     private String date;
     private int price;
     private String status;
-    private TreeMap<UUID, Cupcake> cupcakes;
+    private ArrayList<Cupcake> cupcakes;
 
-    public Order(User user, int price, TreeMap<UUID, Cupcake> cupcakes) {
+    public Order(User user, int price, ArrayList<Cupcake> cupcakes) {
         this.user = user;
         this.price = price;
         this.cupcakes = cupcakes;
         this.orderId = UUID.randomUUID();
+        this.date = formatDate(new Date());
+        this.status = "Modtaget";
+    }
+
+    public Order(UUID id, User user, int price, ArrayList<Cupcake> cupcakes) {
+        this.user = user;
+        this.price = price;
+        this.cupcakes = cupcakes;
+        this.orderId = id;
         this.date = formatDate(new Date());
         this.status = "Modtaget";
     }
@@ -68,11 +78,11 @@ public class Order {
         this.status = status;
     }
 
-    public TreeMap<UUID, Cupcake> getCupcakes() {
+    public ArrayList<Cupcake> getCupcakes() {
         return cupcakes;
     }
 
-    public void setCupcakes(TreeMap<UUID, Cupcake> cupcakes) {
+    public void setCupcakes(ArrayList<Cupcake> cupcakes) {
         this.cupcakes = cupcakes;
     }
 }

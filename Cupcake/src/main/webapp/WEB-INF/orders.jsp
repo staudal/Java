@@ -16,16 +16,16 @@
             <th scope="col">OrderID</th>
             <th scope="col">Dato</th>
             <th scope="col">Status</th>
-            <th scope="col">Pris</th>
+            <th scope="col">Pris (heraf 5 DKK miljøgebyr)</th>
           </tr>
         </thead>
         <tbody>
           <c:forEach var="order" items="${sessionScope.orders}">
           <tr>
-            <th scope="row">${order.value.getOrderId()}</th>
-            <td>${order.value.getDate()}</td>
-            <td>${order.value.getStatus()}</td>
-            <td>${order.value.getPrice()} DKK</td>
+            <th scope="row">${order.getOrderId()}</th>
+            <td>${order.getDate()}</td>
+            <td>${order.getStatus()}</td>
+            <td>${order.getPrice()} DKK</td>
           </tr>
           <tr>
             <td colspan="4">
@@ -39,12 +39,12 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <c:forEach var="cupcake" items="${order.value.getCupcakes()}">
+                  <c:forEach var="cupcake" items="${order.getCupcakes()}">
                     <tr>
-                      <td>${cupcake.value.getId()}</td>
-                      <td>${cupcake.value.getBottom().getName()}</td>
-                      <td>${cupcake.value.getTopping().getName()}</td>
-                      <td>${cupcake.value.getPrice()}</td>
+                      <td>${cupcake.getId()}</td>
+                      <td>${cupcake.getBottom().getName()}</td>
+                      <td>${cupcake.getTopping().getName()}</td>
+                      <td>${cupcake.getPrice()} DKK</td>
                     </tr>
                   </c:forEach>
                 </tbody>

@@ -26,21 +26,23 @@
                   </div>
                   <div class="col-md-8">
                     <div class="card-body">
-                      <h5 class="card-title">Olsker Classic (${cupcake.value.getBottom().getName()})</h5>
-                      <p class="card-text">Kagen består af en luftig bund af ${cupcake.value.getBottom().getName().toLowerCase()} med en blød, luftig ${cupcake.value.getTopping().getName().toLowerCase()}fromage pyntet med sprinkles.</p>
-                      <p class="card-text mb-0"><small class="text-muted">Kagebund: ${cupcake.value.getBottom().getName()}</small></p>
-                      <p class="card-text mb-0"><small class="text-muted">Topping: ${cupcake.value.getTopping().getName()}</small></p>
+                      <h5 class="card-title">Olsker Classic (${cupcake.getBottom().getName()})</h5>
+                      <p class="card-text">Kagen består af en luftig bund af ${cupcake.getBottom().getName().toLowerCase()} med en blød, luftig ${cupcake.getTopping().getName().toLowerCase()}fromage pyntet med sprinkles.</p>
+                      <p class="card-text mb-0"><small class="text-muted">Kagebund: ${cupcake.getBottom().getName()}</small></p>
+                      <p class="card-text mb-0"><small class="text-muted">Topping: ${cupcake.getTopping().getName()}</small></p>
                     </div>
                   </div>
                 </div>
                 <div class="card-footer d-flex justify-content-between">
-                  <small class="text-muted">Pris: ${cupcake.value.getPrice()} DKK</small>
-                  <form class="mb-0" method="post" action="RemoveFromBasket">
-                    <button class="btn btn-danger badge" type="submit" name="cupcake" value="${cupcake.value.getId()}">Fjern</button>
-                  </form>
+                  <small class="text-muted">Pris: ${cupcake.getPrice()} DKK</small>
                 </div>
               </div>
             </c:forEach>
+            <c:if test="${sessionScope.user.getBasket().getSizeOfBasket() >= 1}">
+              <form action="EmptyBasket" method="post" class="mb-0">
+                <button class="btn btn-danger w-100">Tøm kurv</button>
+              </form>
+            </c:if>
           </div>
         </div>
         <div class="col-4 bg-light p-5">
@@ -70,7 +72,12 @@
             </div>
             <form class="mb-0 mt-2" action="PayForOrder" method="post">
               <!-- Button trigger modal -->
-              <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Gå til betaling</button>
+              <c:if test="${sessionScope.user.getBasket().getSizeOfBasket() < 1}">
+                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#staticBackdrop" disabled>Gå til betaling</button>
+              </c:if>
+              <c:if test="${sessionScope.user.getBasket().getSizeOfBasket() >= 1}">
+                <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Gå til betaling</button>
+              </c:if>
 
               <!-- Modal -->
               <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

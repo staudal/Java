@@ -15,6 +15,13 @@ public class Cupcake {
         this.id = UUID.randomUUID();
     }
 
+    public Cupcake(UUID id, Bottom bottom, Topping topping) {
+        this.bottom = bottom;
+        this.topping = topping;
+        this.price = bottom.getPrice() + topping.getPrice();
+        this.id = id;
+    }
+
     public UUID getId() {
         return id;
     }

@@ -10,7 +10,7 @@
 <body class="d-flex">
     <div class="vh-100 w-100 d-flex flex-column justify-content-center align-items-center">
         <h1 class="mb-4">Log ind</h1>
-        <form id="loginform" method="post" class="d-flex flex-column gap-2 justify-content-center mb-3" action="Login">
+        <form method="post" class="d-flex flex-column gap-2 justify-content-center mb-3" action="Login" style="width: 500px;">
             <input type="email" class="form-control" name="email" placeholder="Email" required>
             <input type="password" class="form-control" name="password" placeholder="Password" required>
             <button type="submit" class="btn btn-primary">Log ind</button>
