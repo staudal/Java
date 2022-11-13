@@ -1,17 +1,18 @@
 package com.example.cupcake.model;
 
+import java.util.ArrayList;
 import java.util.TreeMap;
 import java.util.UUID;
 
 public class Basket {
-    private TreeMap<UUID, Cupcake> cupcakes = new TreeMap<>();
+    private ArrayList<Cupcake> cupcakes = new ArrayList<>();
     private int totalPrice;
 
-    public TreeMap<UUID, Cupcake> getCupcakes() {
+    public ArrayList<Cupcake> getCupcakes() {
         return cupcakes;
     }
 
-    public void setCupcakes(TreeMap<UUID, Cupcake> cupcakes) {
+    public void setCupcakes(ArrayList<Cupcake> cupcakes) {
         this.cupcakes = cupcakes;
     }
 
@@ -20,7 +21,7 @@ public class Basket {
     }
 
     public void addCupcakeToBasket(Cupcake cupcake) {
-        this.cupcakes.put(cupcake.getId(), cupcake);
+        this.cupcakes.add(cupcake);
     }
 
     public void clearBasket() {
@@ -29,13 +30,9 @@ public class Basket {
 
     public int getTotalPrice() {
         int price = 0;
-        for (Cupcake cupcake : cupcakes.values()) {
+        for (Cupcake cupcake : cupcakes) {
             price += cupcake.getPrice();
         }
         return price;
-    }
-
-    public void removeCupcakeFromBasket(UUID id) {
-        this.cupcakes.remove(id);
     }
 }

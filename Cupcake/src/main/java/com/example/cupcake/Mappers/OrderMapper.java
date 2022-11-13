@@ -6,6 +6,7 @@ import com.example.cupcake.model.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.TreeMap;
 import java.util.UUID;
 
@@ -21,14 +22,14 @@ public class OrderMapper {
         }
     }
 
-    public TreeMap<UUID, Order> getAllOrdersForUser(User user) {
+    public ArrayList<Order> getAllOrdersForUser(User user) {
         CakeMapper cakeMapper = new CakeMapper();
-        TreeMap<UUID, Order> orders = new TreeMap<>();
+        ArrayList<Order> orders = new ArrayList<>();
         String sql = "SELECT * FROM orders WHERE userId = '"+user.getId()+"'";
         try {
             ResultSet set = connection.connect().createStatement().executeQuery(sql);
             while (set.next()) {
-                orders.put(UUID.fromString(set.getString("orderId")), new Order(user, set.getInt("price"), cakeMapper.getAllCupcakesForOrder(UUID.fromString(set.getString("orderId")))));
+                orders.add(new Order(UUID.fromString(set.getString("orderId")), user, set.getInt("price"), cakeMapper.getAllCupcakesForOrder(UUID.fromString(set.getString("orderId")))));
             }
         } catch (SQLException e) {
             e.printStackTrace();

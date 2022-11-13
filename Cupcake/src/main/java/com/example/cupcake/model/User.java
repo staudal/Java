@@ -1,6 +1,5 @@
 package com.example.cupcake.model;
 
-import java.util.TreeMap;
 import java.util.UUID;
 
 public class User {
@@ -11,6 +10,15 @@ public class User {
     private String firstName;
     private String lastName;
     private String role;
+    private int balance;
+
+    public int getBalance() {
+        return balance;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
 
     public Basket getBasket() {
         return basket;
@@ -37,10 +45,11 @@ public class User {
         this.basket = basket;
         this.id = UUID.randomUUID();
         this.role = role;
+        this.balance = 0;
     }
 
     // logging in
-    public User(UUID id, String email, String password, String firstName, String lastName, Basket basket, String role) {
+    public User(UUID id, String email, String password, String firstName, String lastName, Basket basket, String role, int userBalance) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -48,6 +57,7 @@ public class User {
         this.basket = basket;
         this.id = id;
         this.role = role;
+        this.balance = userBalance;
     }
 
     public String getFirstName() {

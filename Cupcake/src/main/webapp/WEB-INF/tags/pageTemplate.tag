@@ -10,7 +10,9 @@
 <%-- navigation start --%>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-xl">
-        <a class="navbar-brand" href="#">Olsker Cupcakes</a>
+        <form class="mb-0" action="NavigateToHomepage" method="post">
+            <button class="btn navbar-brand" type="submit">Olsker Cupcakes</button>
+        </form>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -25,9 +27,14 @@
                     </li>
                 </ul>
             </form>
-            <form class="d-flex mb-0" action="LoadBasket" method="post">
-                <button type="submit" class="btn btn-primary">Indkøbskurv</button>
-            </form>
+            <div class="d-flex gap-2">
+                <form class="d-flex mb-0" action="LoadAccount" method="post">
+                    <button type="submit" class="btn btn-secondary">Konto</button>
+                </form>
+                <form class="d-flex mb-0" action="LoadBasket" method="post">
+                    <button type="submit" class="btn btn-primary">Indkøbskurv</button>
+                </form>
+            </div>
         </div>
     </div>
 </nav>

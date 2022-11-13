@@ -49,6 +49,20 @@ public class UserMapper {
         return UUID.fromString(id);
     }
 
+    public int getUserBalance(String email) {
+        int balance = 0;
+        String sql = "SELECT * FROM users WHERE email = '" + email + "'";
+        try {
+            ResultSet set = connection.connect().createStatement().executeQuery(sql);
+            while (set.next()) {
+                balance = set.getInt("balance");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return balance;
+    }
+
     public String getFirstName(String email) {
         String firstName = "";
         String sql = "SELECT * FROM users WHERE email = '" + email + "'";
@@ -89,5 +103,27 @@ public class UserMapper {
             e.printStackTrace();
         }
         return role;
+    }
+
+    public int addToUserBalance(String email, int amount) {
+        int balance = getUserBalance(email);
+        String sql = "UPDATE users SET balance = '" + (balance + amount) + "' WHERE email = '" + email + "'";
+        try {
+            connection.connect().createStatement().executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return balance;
+    }
+
+    public int subtractFromUserBalance(String email, int amount) {
+        int balance = getUserBalance(email);
+        String sql = "UPDATE users SET balance = '" + (balance - amount) + "' WHERE email = '" + email + "'";
+        try {
+            connection.connect().createStatement().executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return balance;
     }
 }
