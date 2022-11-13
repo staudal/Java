@@ -1,5 +1,6 @@
 package com.example.cupcake.model;
 
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class User {
@@ -11,6 +12,15 @@ public class User {
     private String lastName;
     private String role;
     private int balance;
+    private ArrayList<Order> orders;
+
+    public ArrayList<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(ArrayList<Order> orders) {
+        this.orders = orders;
+    }
 
     public int getBalance() {
         return balance;

@@ -20,27 +20,14 @@
             <form class="mb-0" method="post">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <button class="nav-link btn" formaction="LoadCupcakeMaker">Shop</button>
-                    </li>
-                    <li class="nav-item">
-                        <button class="nav-link btn" formaction="LoadUserOrders">Ordre</button>
+                        <button class="nav-link btn" formaction="LoadCustomers">Kunder</button>
                     </li>
                 </ul>
             </form>
-            <div class="d-flex gap-2">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        Konto
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <form action="LoadAccount" method="post" class="mb-0">
-                            <li><button class="dropdown-item" type="submit" name="setting" value="account">Min konto</button></li>
-                            <li><button class="dropdown-item" type="submit" name="setting" value="logout">Log ud</button></li>
-                        </form>
-                    </ul>
-                </div>
-                <form class="d-flex mb-0" action="LoadBasket" method="post">
-                    <button type="submit" class="btn btn-primary">Indkøbskurv</button>
+            <div class="d-flex gap-3 align-items-center">
+                <p class="mb-0">Logget ind som admin</p>
+                <form action="LoadAccount" method="post" class="mb-0">
+                    <button class="btn btn-secondary" name="setting" value="logout" type="submit">Log ud</button>
                 </form>
             </div>
         </div>

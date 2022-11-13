@@ -1,6 +1,7 @@
 package com.example.cupcake.Mappers;
 
 import com.example.cupcake.database.Connection;
+import com.example.cupcake.model.Basket;
 import com.example.cupcake.model.Order;
 import com.example.cupcake.model.User;
 
@@ -35,5 +36,14 @@ public class OrderMapper {
             e.printStackTrace();
         }
         return orders;
+    }
+
+    public void removeOrder(UUID orderId) {
+        String sql = "DELETE FROM orders WHERE orderId = '" + orderId + "'";
+        try {
+            connection.connect().createStatement().executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

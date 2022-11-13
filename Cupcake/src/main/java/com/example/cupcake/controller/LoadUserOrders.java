@@ -18,9 +18,8 @@ public class LoadUserOrders extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         User user = (User) request.getSession().getAttribute("user");
-        OrderMapper mapper = new OrderMapper();
-        ArrayList<Order> orders = mapper.getAllOrdersForUser(user);
-
+        OrderMapper orderMapper = new OrderMapper();
+        ArrayList<Order> orders = orderMapper.getAllOrdersForUser(user);
         request.getSession().setAttribute("orders", orders);
         request.getRequestDispatcher("WEB-INF/orders.jsp").forward(request, response);
     }

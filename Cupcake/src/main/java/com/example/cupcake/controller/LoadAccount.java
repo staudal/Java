@@ -10,6 +10,12 @@ import java.io.IOException;
 public class LoadAccount extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/account.jsp").forward(request, response);
+        String setting = request.getParameter("setting");
+        if (setting.equals("account")) {
+            request.getRequestDispatcher("WEB-INF/account.jsp").forward(request, response);
+        } else {
+            request.getSession().invalidate();
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
     }
 }

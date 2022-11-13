@@ -1,10 +1,13 @@
 package com.example.cupcake.Mappers;
 
 import com.example.cupcake.database.Connection;
+import com.example.cupcake.model.Basket;
 import com.example.cupcake.model.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.TreeMap;
 import java.util.UUID;
 
 public class UserMapper {
@@ -12,7 +15,7 @@ public class UserMapper {
 
     public void addUserToDatabase(User user) {
 // USER SCHEMA: userId (varchar), role (varchar), firstName (varchar), lastName (varchar), email (varchar), password (varchar)
-        String sql = "INSERT INTO users (userId, role, firstName, lastName, email, password) VALUES ('"+user.getId()+"', '"+"customer"+"', '"+user.getFirstName()+"', '"+user.getLastName()+"', '"+user.getEmail()+"', '"+user.getPassword()+"')";
+        String sql = "INSERT INTO users (userId, role, firstName, lastName, email, password, balance) VALUES ('"+user.getId()+"', '"+"customer"+"', '"+user.getFirstName()+"', '"+user.getLastName()+"', '"+user.getEmail()+"', '"+user.getPassword()+"', '"+user.getBalance()+"')";
         try {
             connection.connect().createStatement().executeUpdate(sql);
         } catch (SQLException e) {
@@ -125,5 +128,19 @@ public class UserMapper {
             e.printStackTrace();
         }
         return balance;
+    }
+
+    public TreeMap<UUID, User> getAllUsers() {
+        TreeMap<UUID, User> users = new TreeMap<>();
+        String sql = "SELECT * FROM users";
+        try {
+            ResultSet set = connection.connect().createStatement().executeQuery(sql);
+            while (set.next()) {
+                users.put(UUID.fromString(set.getString("userId")), new User(UUID.fromString(set.getString("userId")), set.getString("email"), set.getString("password"), set.getString("firstName"), set.getString("lastName"), new Basket(), set.getString("role"), set.getInt("balance")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return users;
     }
 }

@@ -39,4 +39,13 @@ public class CakeMapper {
         }
         return cakes;
     }
+
+    public void removeCupcakesFromOrder(UUID orderId) {
+        String sql = "DELETE FROM cakes WHERE orderId = '" + orderId + "'";
+        try {
+            connection.connect().createStatement().executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

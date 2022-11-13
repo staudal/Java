@@ -1,4 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.30, for macos12 (x86_64)
+CREATE DATABASE  IF NOT EXISTS `cupcakes` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `cupcakes`;
+-- MySQL dump 10.13  Distrib 8.0.30, for Win64 (x86_64)
 --
 -- Host: localhost    Database: cupcakes
 -- ------------------------------------------------------
@@ -42,7 +44,7 @@ CREATE TABLE `cakes` (
 
 LOCK TABLES `cakes` WRITE;
 /*!40000 ALTER TABLE `cakes` DISABLE KEYS */;
-INSERT INTO `cakes` VALUES ('12af6b72-b3b4-4503-9267-c026ebcda134','458cfc88-b14c-46a3-811e-a06938152ce7','Mandel','Blåbær',7,5),('1672dd4d-ccde-47c0-abfc-28abbf703208','6968c5fb-94ed-43da-b3dd-42d694c220b2','Chokolade','Chokolade',5,5),('190e9aea-5989-41e3-9833-ab8ac61a83ad','458cfc88-b14c-46a3-811e-a06938152ce7','Pistacie','Hindbær',6,5),('5e5cb2b5-ae2b-4618-aa07-8c4762285073','3e0c05d4-e2a0-48c8-893c-4667b63a5308','Chokolade','Chokolade',5,5),('660b0bca-70c7-483e-b49b-294beb91cc8e','6968c5fb-94ed-43da-b3dd-42d694c220b2','Mandel','Citron',7,8),('66f09c5d-01ba-4374-80f7-bb656936af88','b9e702dd-494a-4662-bbe7-32c3159fbba3','Chokolade','Chokolade',5,5),('78495f0e-ee53-40b7-b413-38b493e0c4a7','458cfc88-b14c-46a3-811e-a06938152ce7','Chokolade','Chokolade',5,5),('82685f71-a635-4104-a628-e35c18afe498','301111b4-55e4-42e5-8a48-695052b22462','Vanilje','Blåbær',5,5),('c468e91b-23a7-49aa-8612-dd10c056f931','2471f858-ba8f-4d62-81d0-ba25fbaa4a5c','Chokolade','Chokolade',5,5),('ca308d39-eefa-4560-8c5f-f8de8b7f50d8','2769d7c6-ad83-46ba-b1da-0ea7f1ee0e2a','Vanilje','Blåbær',5,5),('cc2e7abc-58be-4bb2-841f-be42668e8bbf','2471f858-ba8f-4d62-81d0-ba25fbaa4a5c','Vanilje','Blåbær',5,5),('eb6ae124-f2c9-4f20-9c7d-0af345c7ae06','6968c5fb-94ed-43da-b3dd-42d694c220b2','Vanilje','Hindbær',5,5);
+INSERT INTO `cakes` VALUES ('0d4534ae-c4d5-4847-9578-0ce3c985a7ac','bfb54bbd-3840-4963-b02d-e82ca947d1ac','Chokolade','Chokolade',5,5),('1672dd4d-ccde-47c0-abfc-28abbf703208','6968c5fb-94ed-43da-b3dd-42d694c220b2','Chokolade','Chokolade',5,5),('5093a425-abb3-4408-8fe0-8657a6996292','bfb54bbd-3840-4963-b02d-e82ca947d1ac','Muskatnød','Hindbær',5,5),('660b0bca-70c7-483e-b49b-294beb91cc8e','6968c5fb-94ed-43da-b3dd-42d694c220b2','Mandel','Citron',7,8),('8846b9e4-0c9e-49ef-a0a7-163b6000cd91','f2140e78-cde8-4dcd-8144-dfdb6626bddd','Muskatnød','Hindbær',5,5),('de8a7dac-d070-47d6-9ad3-81edfa34628a','f2140e78-cde8-4dcd-8144-dfdb6626bddd','Mandel','Blåbær',7,5),('eb6ae124-f2c9-4f20-9c7d-0af345c7ae06','6968c5fb-94ed-43da-b3dd-42d694c220b2','Vanilje','Hindbær',5,5),('fa7a590e-d2ec-467a-9fd2-57a4d1ac789e','f2140e78-cde8-4dcd-8144-dfdb6626bddd','Pistacie','Hindbær',6,5);
 /*!40000 ALTER TABLE `cakes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -72,7 +74,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES ('2471f858-ba8f-4d62-81d0-ba25fbaa4a5c','b04de574-0f81-4c5b-a706-db8c44909e72','12 Nov 2022',25,'Modtaget'),('2769d7c6-ad83-46ba-b1da-0ea7f1ee0e2a','b04de574-0f81-4c5b-a706-db8c44909e72','12 Nov 2022',15,'Modtaget'),('301111b4-55e4-42e5-8a48-695052b22462','b04de574-0f81-4c5b-a706-db8c44909e72','12 Nov 2022',15,'Modtaget'),('3e0c05d4-e2a0-48c8-893c-4667b63a5308','b04de574-0f81-4c5b-a706-db8c44909e72','12 Nov 2022',15,'Modtaget'),('458cfc88-b14c-46a3-811e-a06938152ce7','b04de574-0f81-4c5b-a706-db8c44909e72','12 Nov 2022',38,'Modtaget'),('6968c5fb-94ed-43da-b3dd-42d694c220b2','b04de574-0f81-4c5b-a706-db8c44909e72','12 Nov 2022',40,'Modtaget'),('b9e702dd-494a-4662-bbe7-32c3159fbba3','b04de574-0f81-4c5b-a706-db8c44909e72','12 Nov 2022',15,'Modtaget');
+INSERT INTO `orders` VALUES ('6968c5fb-94ed-43da-b3dd-42d694c220b2','b04de574-0f81-4c5b-a706-db8c44909e72','12 Nov 2022',40,'Modtaget'),('bfb54bbd-3840-4963-b02d-e82ca947d1ac','19921332-0b0f-42e1-b892-966183af8ab7','13 Nov 2022',25,'Modtaget'),('f2140e78-cde8-4dcd-8144-dfdb6626bddd','19921332-0b0f-42e1-b892-966183af8ab7','13 Nov 2022',38,'Modtaget');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -103,7 +105,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('115e6243-b292-4396-8869-db322a19b398','customer','Mette','Staudal','mstaudal@gmail.com','12345',0),('b04de574-0f81-4c5b-a706-db8c44909e72','customer','Jakob','Staudal','jakobstaudal@outlook.com','abelabe',1947);
+INSERT INTO `users` VALUES ('115e6243-b292-4396-8869-db322a19b398','customer','Mette','Staudal','mstaudal@gmail.com','12345',0),('19921332-0b0f-42e1-b892-966183af8ab7','customer','Lars','Staudal','lars@staudal.dk','12345',932),('b04de574-0f81-4c5b-a706-db8c44909e72','admin','Jakob','Staudal','jakobstaudal@outlook.com','12345',1947);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -116,4 +118,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-12 23:33:24
+-- Dump completed on 2022-11-13 14:10:35
