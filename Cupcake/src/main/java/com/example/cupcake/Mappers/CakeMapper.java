@@ -9,7 +9,6 @@ import com.example.cupcake.model.Topping;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.TreeMap;
 import java.util.UUID;
 
 public class CakeMapper {
@@ -28,7 +27,7 @@ public class CakeMapper {
 
     public ArrayList<Cupcake> getAllCupcakesForOrder(UUID id) {
         ArrayList<Cupcake> cakes = new ArrayList<>();
-        String sql = "SELECT * FROM cakes WHERE orderId = '" +id + "'";
+        String sql = "SELECT * FROM cakes WHERE orderId = '" + id + "'";
         try {
             ResultSet set = connection.connect().createStatement().executeQuery(sql);
             while (set.next()) {

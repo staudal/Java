@@ -24,10 +24,8 @@ public class Login extends HttpServlet {
             User user = new User(userMapper.getUserId(email), email, password, userMapper.getFirstName(email), userMapper.getLastName(email), new Basket(), userMapper.getRole(email), userMapper.getUserBalance(email));
             request.getSession().setAttribute("user", user);
             if (user.getRole().equals("admin")) {
-                System.out.println("admin");
                 request.getRequestDispatcher("WEB-INF/admin/homepage.jsp").forward(request, response);
             } else {
-                System.out.println("customer");
                 request.getRequestDispatcher("WEB-INF/homepage.jsp").forward(request, response);
             }
         } else {

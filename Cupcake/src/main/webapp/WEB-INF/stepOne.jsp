@@ -16,7 +16,7 @@
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 <div class="col">
                     <div class="card h-100">
-                        <img src="https://i.ibb.co/nsqfdqb/chokolade.jpg" class="card-img-top" alt="...">
+                        <img src="https://i.ibb.co/nsqfdqb/chokolade.jpg" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">Chokolade</h5>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis sollicitudin mi, a dictum lectus malesuada eget.</p>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="https://i.ibb.co/5r8kPsN/mandel.jpg" class="card-img-top" alt="...">
+                        <img src="https://i.ibb.co/hCPZ33z/vanilje.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Vanilje</h5>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis sollicitudin mi, a dictum lectus malesuada eget.</p>
@@ -56,7 +56,7 @@
                 </div>
                 <div class="col">
                     <div class="card h-100">
-                        <img src="https://i.ibb.co/hCPZ33z/vanilje.jpg" class="card-img-top" alt="...">
+                        <img src="https://i.ibb.co/5r8kPsN/mandel.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Mandel</h5>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis sollicitudin mi, a dictum lectus malesuada eget.</p>
